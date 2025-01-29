@@ -11,7 +11,7 @@ Once your raspberrypi is connected to your laptop, you need to wire the sensor. 
 [https://docs.google.com/document/d/11rxs6Ok0OJzUIqv6gfYxtGaZftekOBfRPw3bDT9AFXY/edit?tab=t.0
 ](url)
 
-Once the sensor is wired to the pi, you can double check to make sure it is correct by running the command sudo i2cdetect -y 1 in the command window of the pi. It should show the address as x29. Now you're good to start actually running the program. The easiest way to access the files is buy logging on to github using the browser on the pi and downloading the bno05 header file, c file (containing the api) and the driver.cpp file. You can open these in the Geany editor which should already be on the pi if you want to make changes to the files. Making sure they're all in the same folder, you can now execute the following command in the terminal:
+Once the sensor is wired to the pi, you can double check to make sure it is correctly configured by running the command sudo i2cdetect -y 1 in the command window of the pi. It should show the address as x29. Now you're good to start downloading the necessary files and running the driver file. The easiest way to access what you need is by logging on to Github using the browser on the pi and downloading the bno05 header file, c file (containing the api) and the driver.cpp file. You can open these in the Geany editor which should already be on the pi if you want to make changes to the files. Making sure they're all in the same folder, you can now execute the following command in the terminal:
 
 g++ -o drivertest driver.cpp bno055.c -lwiringPi
 
