@@ -46,15 +46,15 @@ void delay_msec(u32 msec) {
     usleep(msec * 1000);  // Convert milliseconds to microseconds
 }
 
-int main() {
+int main() { //initialize the variables for all of the different data types, note that we are initialziing the double types which are the values that have units (not just raw)
     bno055_t bno055;
     bno055_euler_double_t euler_angles;
     bno055_accel_double_t accel_xyz;
     bno055_linear_accel_double_t linear_accel_xyz;
     bno055_gravity_double_t gravity_xyz;
     bno055_gyro_double_t angular_velocity_xyz;
-    bno055_mag_double_t mag_field_xyz;
-    bno055_quaternion_t quater_wxyz;
+    bno055_mag_double_t mag_field_xyz; //magnetic field
+    bno055_quaternion_t quater_wxyz; //quarternion coords
 
     // Initialize wiringPi for I2C setup
    // if (wiringPiI2CSetup() == -1) {
@@ -68,7 +68,7 @@ int main() {
     bno055.delay_msec = delay_msec;
     bno055.dev_addr = BNO055_I2C_ADDR1;  // Use the appropriate I2C address
 
-    // Initialize BNO055
+    // Initialize BNO055 
     if (bno055_init(&bno055) != BNO055_SUCCESS) {
         std::cerr << "BNO055 initialization failed!" << std::endl;
         return -1;
@@ -120,7 +120,7 @@ int main() {
     }
     
 
-        // Print Euler angles
+        // print euler angles
         std::cout << "Heading: " << euler_angles.h << std::endl;
         std::cout << "Roll: " << euler_angles.r << std::endl;
         std::cout << "Pitch: " << euler_angles.p << std::endl;
@@ -163,7 +163,7 @@ int main() {
 
         std::cout << "                  "<< std::endl;
         
-         //print quater data
+         //print quaternion coordinates
         std::cout << "w quater: " <<quater_wxyz.w << std::endl;
         std::cout << "x quater: " <<quater_wxyz.x << std::endl;
         std::cout << "y quater: " << quater_wxyz.y << std::endl;
