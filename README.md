@@ -1,7 +1,7 @@
 # Electrical
 McMaster Exoskeleton Electrical Repo
 
-Copy and paste this URL into your browser for detailed instructions on how to connect your raspberrypi to your laptop or to a monitor set up with wired keyboard and mouse peripherals (anything with a usb connection).
+Follow the link below for detailed instructions on how to connect your raspberrypi to your laptop or to a monitor set up with wired keyboard and mouse peripherals (anything with a usb connection).
 
 [https://docs.google.com/document/d/1ZM4OjxhLERR3PYTnz-XncFo0uSq0vDOrpFr3oSLz7uA/edit?tab=t.0#heading=h.ij9ww1wes34w
 ](url)
