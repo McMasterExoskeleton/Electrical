@@ -1,6 +1,8 @@
 # Electrical
 McMaster Exoskeleton Electrical Repo
 
+**Instructions for setting up and programming a raspberry pi with an IMU sensor:**
+
 Follow the link below (you may need to copy and paste the url into a new tab) for detailed instructions on:
   - Connecting the sensors to the raspberry pi
   - Connecting your raspberrypi to your laptop or monitor set up with a wired keyboard and mouse peripherals (anything with a USB connection).
