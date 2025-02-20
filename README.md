@@ -1,6 +1,9 @@
 # Electrical
 McMaster Exoskeleton Electrical Repo
 
+**UPDATE: Please find below linked instructions for interfacing 6 sensors with the MUX (copy and paste url into new tab)**
+https://docs.google.com/document/d/1CEbjtZmNukN5atjhDCSBIPe4n6trsSXxlDaVnLpP-og/edit?usp=sharing
+
 **Instructions for setting up and programming a raspberry pi with an IMU sensor:**
 
 Follow the link below (you may need to copy and paste the url into a new tab) for detailed instructions on:
