@@ -60,7 +60,7 @@ void delay_msec(u32 msec) {
 int main() {
     rpi_tca9548a tca;
     tca.init(0x70);
-    tca.set_channel(1);
+    
     
     bno055_t bno055;
     bno055_euler_double_t euler_angles;
@@ -100,6 +100,9 @@ int main() {
     // Delay to allow sensor to switch modes
     delay_msec(BNO055_MODE_SWITCHING_DELAY);
     while(1){
+      tca.set_channel(channel);
+      usleep(10000);
+  
         // Read Euler angles
       if (bno055_convert_double_euler_hpr_deg(&euler_angles) != BNO055_SUCCESS) {
             std::cerr << "Failed to read Euler angles!" << std::endl;
