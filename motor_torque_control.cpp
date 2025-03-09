@@ -16,11 +16,20 @@
 
 // Initialize Modbus RTU connection
 modbus_t* init_modbus(const char* device, int slave_id) {
-    modbus_t *ctx = modbus_new_rtu(device, 115200, 'N', 8, 1);
+
+    // DEBUGGING
+    // According to the user manual, the motor expects the data format to have an even parity
+    // Old code used     : 'N' (No parity)
+    // New code will use : 'E' (Even parity)
+    modbus_t *ctx = modbus_new_rtu(device, 115200, 'E', 8, 1);
     if (ctx == nullptr) {
         std::cerr << "Unable to create libmodbus context for " << device << "\n";
         return nullptr;
     }
+
+    // DEBUGGING
+    // Use slave_id: 0 instead of 1 (sends commands to ALL connected devices instead of a specific one, think of this as a broadcast address)
+    // new code: modbus_set_slave(ctx, 0)
     if (modbus_set_slave(ctx, slave_id) == -1) {
         std::cerr << "Invalid slave ID for " << device << "\n";
         modbus_free(ctx);
@@ -81,6 +90,18 @@ int main() {
         if (motor.ctx == nullptr) {
             std::cerr << "Skipping " << motor.device << " due to connection failure.\n";
         }
+    }
+
+    // DEBUGGING
+    // Check if there is a RS-485 connection issue
+    
+    uint16_t test_value;
+    int rc = modbus_read_registers(motors[0].ctx, REG_ADDR_CNTRL_WORD, 1, &test_value);
+    if (rc == -1) {
+        std::cerr << "Modbus communication error: " << modbus_strerror(errno) << "\n";
+        return -1;
+    } else {
+        std::cout << "Current Control Word: " << test_value << "\n";
     }
 
     // Followed simple example from user manual for torque profile mode
