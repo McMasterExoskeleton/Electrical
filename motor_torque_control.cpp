@@ -110,7 +110,10 @@ int main() {
         if (motor.ctx) {
             write_register(motor.ctx, REG_ADDR_OP_MODE,    0x04,   "Profile Torque Mode");
             write_register(motor.ctx, REG_ADDR_MAX_TORQUE, 0x0BB8, "Max Torque (3000‰)");
-            write_register(motor.ctx, REG_ADDR_TRQ_SLOPE,  0x03E8, "Torque Slope (1000‰/s)");
+
+            // User manual requires the torque slope to be a uint32_t value. The signature of the libmodbus "write_register" command
+            // is uint16_t. Temp solution: Use default value of 3000%
+            //write_register(motor.ctx, REG_ADDR_TRQ_SLOPE,  0x03E8, "Torque Slope (1000‰/s)");
             write_register(motor.ctx, REG_ADDR_TGT_TORQUE, 0xA,    "Target Torque (10‰)");
             write_register(motor.ctx, REG_ADDR_CNTRL_WORD, 0x0006, "Motor Shutdown");
             write_register(motor.ctx, REG_ADDR_CNTRL_WORD, 0x000F, "Enable Motor Operation");
